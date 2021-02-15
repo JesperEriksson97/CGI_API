@@ -5,8 +5,12 @@ const port = process.env.PORT || "8000"
 
 // Simple request
 app.get("/", (req, res) => {
-    res.status(200).send("WHATABYTE: Food For Devs")
+    res.status(200).send(
+        "CGI API"
+    )
 })
+
+app.use('/users', require('./routes/userRouter'))
 
 app.listen(port, () => {
     console.log(`Listening to requests on http://localhost:${port}`);
