@@ -3,7 +3,8 @@ const userController = {}
 
 userController.getExampleUser = (req, res) => {
 
-    res.status(200).send(
+    // Change to connecting a mongoose service
+    res.status(200).json(
         {
             "username": "Jesper Eriksson",
             "id": "1"
