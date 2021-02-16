@@ -12,4 +12,16 @@ userController.getExampleUser = (req, res) => {
     )
 }
 
+userController.getSpecificUser = (req, res) => {
+    console.log(req.params.id)
+}
+
+userController.saveUser = (req, res) => {
+    console.log(req.body)
+}
+
+userController.updateUser = (req, res) => {
+    console.log(req.body)
+}
+
 module.exports = userController
