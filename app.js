@@ -3,9 +3,16 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 const app = express()
 const port = process.env.PORT || "8000"
+const db = process.env.mongoURI
+const bodyParser = require("body-parser");
+
+
+// Body Parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 
 // Database connection
-const db = process.env.mongoURI
 mongoose.connect(db, 
     { 
         useUnifiedTopology: true, 
