@@ -1,4 +1,4 @@
-  
+const User = require('../model/User')
 const userController = {}
 
 userController.getExampleUser = (req, res) => {
@@ -18,7 +18,26 @@ userController.getSpecificUser = (req, res) => {
 
 userController.saveUser = (req, res) => {
     console.log(req.body)
+
+    const email = req.body.email
+    const password = req.body.password
+    const username = req.body.username
+    const fullname = req.body.fullname
+
+    const newUser = new User({
+        email: email,
+        username: username,
+        fullname: fullname,
+        password: password
+    })
+
+    User.save(() => {
+        res.send({ "msg": "Success" })
+    })
+
+
 }
+
 
 userController.updateUser = (req, res) => {
     console.log(req.body)
