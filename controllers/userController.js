@@ -2,8 +2,6 @@ const User = require('../model/User')
 const userController = {}
 
 userController.getExampleUser = (req, res) => {
-
-    // Change to connecting a mongoose service
     res.status(200).json(
         {
             "username": "Jesper Eriksson",
@@ -13,7 +11,14 @@ userController.getExampleUser = (req, res) => {
 }
 
 userController.getSpecificUser = (req, res) => {
-    console.log(req.params.id)
+    User.findOne({ '_id': req.body._id }, (err, user) => {
+        if (err) {
+            console.log(err)
+            res.send({ "msg": "Error! Could not find any User." })
+        } else {
+            res.send(user)
+        }
+    })
 }
 
 userController.saveUser = (req, res) => {
