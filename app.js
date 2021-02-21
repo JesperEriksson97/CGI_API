@@ -13,16 +13,18 @@ app.use(bodyParser.json());
 
 
 // Database connection
-mongoose.connect(db, 
-    { 
-        useUnifiedTopology: true, 
-        useNewUrlParser: true, 
+mongoose.connect(db,
+    {
+        useUnifiedTopology: true,
+        useNewUrlParser: true,
         writeConcern: {
             j: true
         }
     })
-  .then(() => console.log('MongoDB Connected...'))
-  .catch(err => console.log(err))
+    .then(() => console.log('MongoDB Connected...'))
+    .catch(err => console.log(err))
+
+mongoose.connection.on('connected', () => console.log('Mongoose connected'))
 
 // Simple request
 app.get("/", (req, res) => {

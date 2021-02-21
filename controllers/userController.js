@@ -17,22 +17,23 @@ userController.getSpecificUser = (req, res) => {
 }
 
 userController.saveUser = (req, res) => {
-    console.log(req.body)
 
-    const email = req.body.email
-    const password = req.body.password
-    const username = req.body.username
-    const fullname = req.body.fullname
+    const data = {
+        email: req.body.email,
+        password: req.body.password,
+        username: req.body.username,
+        fullname: req.body.fullname
+    }
 
-    const newUser = new User({
-        email: email,
-        username: username,
-        fullname: fullname,
-        password: password
-    })
+    const user = new User(data)
 
-    User.save(() => {
-        res.send({ "msg": "Success" })
+
+    user.save((error) => {
+        if (error) {
+            console.log(error)
+        } else {
+            res.send({ "msg": "Success" })
+        }
     })
 
 
