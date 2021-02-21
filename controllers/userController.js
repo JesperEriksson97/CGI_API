@@ -32,7 +32,6 @@ userController.saveUser = (req, res) => {
 
     const user = new User(data)
 
-
     user.save((error) => {
         if (error) {
             console.log(error)
@@ -40,8 +39,6 @@ userController.saveUser = (req, res) => {
             res.send({ "msg": "Success" })
         }
     })
-
-
 }
 
 
