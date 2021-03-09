@@ -4,6 +4,7 @@ const userController = require('../controllers/userController')
 
 router.get('/', userController.getExampleUser)
 
-router.post('/', userController.saveUser) 
+router.post('/', userController.saveUser)
+router.post('/update/', userController.updateUser)
 
 module.exports = router
