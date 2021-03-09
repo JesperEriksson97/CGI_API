@@ -45,30 +45,20 @@ userController.saveUser = (req, res) => {
 userController.updateUser = (req, res) => {
 
     const data = {
-        _id: req.body.userId,
+        id: req.body.userId,
         email: req.body.email,
         password: req.body.password,
         username: req.body.username,
         fullname: req.body.fullname
     }
 
-    User.findOne({'_id': req.body.userId}, (err, user) => {
+    User.findOne({'id': req.body.userId}, (err, user) => {
         if(err) {
             res.send({"msg": "Error! No user with that ID."})
         } else {
-            User.deleteOne({'_id': req.body.userId}, (err) => {
-                if(err) {
-                    console.log(err)
-                }
-            })
-            const updatedUser = new User(data)
-            updatedUser.save((error) => {
-                if(error) {
-                    res.send({"msg": "Error! User could not be saved"})
-                } else {
-                    res.send({"msg": "User successfully saved."})
-                }
-            })
+            user.overwrite(data)
+            await user.save()
+            res.send({"msg": "User saved successfully."})
         }
     })
 }
