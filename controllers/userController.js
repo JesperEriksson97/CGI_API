@@ -23,6 +23,8 @@ userController.getSpecificUser = (req, res) => {
 
 userController.saveUser = (req, res) => {
 
+    console.log(req.body.email)
+
     const data = {
         email: req.body.email,
         password: req.body.password,
