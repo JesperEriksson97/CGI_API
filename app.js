@@ -4,12 +4,11 @@ require('dotenv').config()
 const app = express()
 const port = process.env.PORT || "8000"
 const db = process.env.mongoURI
-const bodyParser = require("body-parser");
 
 
 // Body Parser
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded());
+app.use(express.json());
 
 
 // Database connection
