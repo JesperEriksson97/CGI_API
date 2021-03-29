@@ -63,4 +63,14 @@ userController.updateUser = (req, res) => {
     })
 }
 
+userController.deleteUser = (req, res) => {
+    User.deleteOne({'id': req.body.userId}, (err, user) => {
+        if (err) {
+            res.send({"msg": "Error! User was not deleted."})
+        } else {
+            res.send({"msg": "User deleted successfully."})
+        }
+    })
+}
+
 module.exports = userController
