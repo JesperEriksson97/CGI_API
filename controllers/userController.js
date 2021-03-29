@@ -26,6 +26,7 @@ userController.saveUser = (req, res) => {
     console.log(req.body.email)
 
     const data = {
+        id: req.body.userId,
         email: req.body.email,
         password: req.body.password,
         username: req.body.username,
