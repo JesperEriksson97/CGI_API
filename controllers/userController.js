@@ -11,7 +11,7 @@ userController.getExampleUser = (req, res) => {
 }
 
 userController.getSpecificUser = (req, res) => {
-    User.findOne({ '_id': req.body._id }, (err, user) => {
+    User.findOne({ 'id': req.body.userId }, (err, user) => {
         if (err) {
             console.log(err)
             res.send({ "msg": "Error! Could not find any User." })
@@ -57,7 +57,7 @@ userController.updateUser = (req, res) => {
             res.send({"msg": "Error! No user with that ID."})
         } else {
             user.overwrite(data)
-            await user.save()
+            user.save()
             res.send({"msg": "User saved successfully."})
         }
     })
